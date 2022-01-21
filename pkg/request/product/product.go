@@ -1,5 +1,7 @@
 package product
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type (
 	ImageList struct {
 		ImageName string `json:"image_name" bson:"image_name"`
@@ -7,6 +9,6 @@ type (
 	}
 
 	FindeOne struct {
-		ProductId string `json:"productid"`
+		Id primitive.ObjectID `json:"id" bson:"_id"`
 	}
 )

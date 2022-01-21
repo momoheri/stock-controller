@@ -19,7 +19,7 @@ func FindOne(c echo.Context, req *creq.FindeOne) (res *model.GetQty, err error) 
 	defer cancel()
 
 	filter := bson.M{
-		"productid": req.ProductId,
+		"_id": req.Id,
 	}
 
 	coll := db.Mongo.Conn.Collection("product").FindOne(cto, filter)

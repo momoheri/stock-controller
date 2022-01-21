@@ -16,8 +16,9 @@ func CheckStock(c echo.Context) error {
 	var err error
 	id := c.QueryParam("id")
 
-	req := new(creq.FindeOne)
-	if err = c.Bind(req); err != nil {
+	idObj, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		log.Println(err)
 		return response.WriteError(c, response.Body{
 			HTTPStatusCode: http.StatusBadRequest,
 			Message:        http.StatusText(http.StatusBadRequest),
@@ -25,7 +26,17 @@ func CheckStock(c echo.Context) error {
 		})
 	}
 
-	req.ProductId = id
+	req := new(creq.FindeOne)
+
+	req.Id = idObj
+
+	if err = c.Bind(req); err != nil {
+		return response.WriteError(c, response.Body{
+			HTTPStatusCode: http.StatusBadRequest,
+			Message:        http.StatusText(http.StatusBadRequest),
+			Errors:         err,
+		})
+	}
 
 	res, err := FindOne(c, req)
 	if err != nil {
