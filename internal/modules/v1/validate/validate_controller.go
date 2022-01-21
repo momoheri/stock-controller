@@ -12,7 +12,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func CheckStock(c echo.Context) error {
+func CheckValidate(c echo.Context) error {
 	var err error
 	id := c.QueryParam("id")
 

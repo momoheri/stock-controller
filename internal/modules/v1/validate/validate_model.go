@@ -5,8 +5,9 @@ import (
 	db "stock-controller/internal/db/mongo"
 	"stock-controller/internal/helper"
 	"stock-controller/pkg/model/product"
+	model "stock-controller/pkg/model/product"
 	creq "stock-controller/pkg/request/product"
-	model "stock-controller/pkg/response/product"
+	res "stock-controller/pkg/response/product"
 	prodtype "stock-controller/pkg/types"
 
 	"github.com/labstack/echo/v4"
@@ -14,7 +15,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func FindOne(c echo.Context, req *creq.FindeOne) (res *model.GetQty, err error) {
+func FindOne(c echo.Context, req *creq.FindeOne) (res *model.Product, err error) {
 	cto, cancel := helper.ContextTimeout(0)
 	defer cancel()
 
@@ -37,7 +38,7 @@ func FindOne(c echo.Context, req *creq.FindeOne) (res *model.GetQty, err error) 
 	return
 }
 
-func Update(c echo.Context, req *product.Product) (res *model.Validate, err error) {
+func Update(c echo.Context, req *product.Product) (res *res.Validate, err error) {
 	cto, cancel := helper.ContextTimeout(0)
 	defer cancel()
 

@@ -23,7 +23,7 @@ func Handler() *echo.Echo {
 	e.POST("/v1/AddUser", prod.AddProduct)
 
 	//Get Data
-	e.GET("/v1/GetStock", val.CheckStock)
+	e.GET("/v1/CheckValidate", val.CheckValidate)
 
 	//Update
 	e.PUT("/v1/validate", val.ValidateStock)

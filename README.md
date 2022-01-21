@@ -1,1 +1,4 @@
 # stock-controller
+1. Penyebab terjadinya ulasan buruk adalah adanya kesalahan pada saat pelaporan persedian, sehingga tidak sesuai antara di sistem dengan persediaan yang ada di gudang
+2. Untuk mencegah terjadinya kembali masalah tersebut harus ada validasi persediaan pada saat barang tersebut akan di masukan ke dalam promo atau flash sale. Juga harus ada reminder jika persediaan dalam jumlah tertentu tertentu pada saat user checkout.
+3. Di sini saya sediakan API service untuk cek stock dan validasi stock. Ketika mengaktifkan promo atau flash sale pada item tersbut maka mengakses API /v1/CheckValidate jika validatestatus di collection product valunya = 0 maka item tersbut belum di validasi, shingga admin harus cek qty item tersebut di sistem dan digudang persediaan. setelah di cek maka admin menyesuaikan bahwa persediaan sudah sesuai, lalu menekan tombol validate makan akan mengakses API /v1/validate
